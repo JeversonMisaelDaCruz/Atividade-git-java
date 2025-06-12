@@ -1,7 +1,14 @@
 import java.util.ArrayList;
+import java.util.List;
+
 public class GerenciadorUsuarios {
-    public ArrayList<Usuario> usuarios = new ArrayList<>();
+    private List<Usuario> usuarios = new ArrayList<>();
+
     public void adicionarUsuario(Usuario u) {
         usuarios.add(u);
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
     }
 }

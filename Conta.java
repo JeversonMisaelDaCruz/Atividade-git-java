@@ -1,14 +1,34 @@
 public class Conta {
-    public int numeroConta;
-    public double saldo;
+    private int numeroConta;
+    private double saldo;
+
     public Conta(int numeroConta) {
         this.numeroConta = numeroConta;
-        saldo = 0;
+        this.saldo = 0;
     }
+
+    public int getNumeroConta() {
+        return numeroConta;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
     public void depositar(double valor) {
-        saldo = saldo + valor; // Sem validação para valor negativo
+        if (valor <= 0) {
+            throw new IllegalArgumentException("Valor de depósito deve ser positivo.");
+        }
+        saldo += valor;
     }
+
     public void sacar(double valor) {
-        saldo = saldo - valor; // Sem validação para saldo insuficiente ou valor negativo
+        if (valor <= 0) {
+            throw new IllegalArgumentException("Valor de saque deve ser positivo.");
+        }
+        if (valor > saldo) {
+            throw new IllegalArgumentException("Saldo insuficiente para saque.");
+        }
+        saldo -= valor;
     }
 }
